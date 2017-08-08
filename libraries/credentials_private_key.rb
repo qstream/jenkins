@@ -117,11 +117,7 @@ class Chef
     def attribute_to_property_map
       {
         private_key: 'credentials.privateKey',
-<<<<<<< HEAD
-        passphrase: 'credentials.passphrase ? credentials.passphrase.plainText : null',
-=======
         passphrase: 'credentials.passphrase && credentials.passphrase.plainText',
->>>>>>> chef-cookbooks/master
       }
     end
 
