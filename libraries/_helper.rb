@@ -73,6 +73,7 @@ EOH
         h[:jvm_options] = jvm_options unless jvm_options.nil?
         h[:protocol] = protocol unless protocol.nil?
         h[:cli_user] = cli_user unless cli_user.nil?
+        h[:auth] = auth if auth_given?
       end
 
       Jenkins::Executor.new(options)
@@ -281,6 +282,10 @@ EOH
         !node.run_state[:jenkins_private_key].nil? # ~FC001
     end
 
+    def auth_given?
+      !node.run_state[:jenkins_auth].nil?
+    end
+
     #
     # The proxy information.
     #
@@ -341,6 +346,10 @@ EOH
     #
     def password
       node.run_state[:jenkins_password] # ~FC001
+    end
+
+    def auth
+      node.run_state[:jenkins_auth]
     end
 
     #
